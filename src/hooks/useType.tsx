@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react"
-import {isKeyBoardCodeAllowed} from "../utils/helpers"
+import {isKeyboardCodeAllowed} from "../utils/helpers"
 
 const useType = (enabled:boolean) => {
   const [cursor,setCursor]=useState(0);
@@ -9,7 +9,7 @@ const useType = (enabled:boolean) => {
 
   const keyDownHandler =useCallback(
     ({key,code}:KeyboardEvent)=>{
-        if(!enabled || isKeyBoardCodeAllowed(code)){
+        if(!enabled || !isKeyboardCodeAllowed(code)){
           return;
         }
 
@@ -26,7 +26,7 @@ const useType = (enabled:boolean) => {
         }
     },
     [enabled]
-  )
+  );
   
   const clearTyped=useCallback(()=>{
     setTyped("")

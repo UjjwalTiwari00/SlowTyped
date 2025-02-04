@@ -2,7 +2,7 @@ import Caret from "./Caret "
 
 
 const UserInput =({words,UserInputWord,className=''}:{words:string,UserInputWord:string,className?:string}) => {
-  console.log(words,"this is words ")
+  // console.log(words,"this is words ")
   console.log(UserInputWord)
     const typedWords=UserInputWord.split('')
     console.log(typedWords)
@@ -21,13 +21,13 @@ const UserInput =({words,UserInputWord,className=''}:{words:string,UserInputWord
 
 const CharCheck=({actual,expected}:{actual:string,expected:string})=>{
         const isCorrect=actual===expected;
-        const isWhiteSpace=expected===' ';
+        const isWhiteSpace=expected===" ";
 
         return(
             <span className={`
-                ${!isCorrect && !isWhiteSpace ? 'text-red-300' : ''} 
-                ${isCorrect && isWhiteSpace ? 'text-blue-300' : ''}
-                ${!isCorrect && isWhiteSpace ? 'text-red-300' : ''}
+                ${!isCorrect && !isWhiteSpace ? 'bg-red-300' : ''} 
+                ${isCorrect && isWhiteSpace ? 'bg-green-600' : ''}
+                ${!isCorrect && isWhiteSpace ? 'bg-red-300' : ''}
               `}>
                 {
                   expected

@@ -1,35 +1,71 @@
-import Header from "./components/Header"
-import InputComponent from "./components/InputComponent"
-import UserInput from "./components/UserInput"
-import ShownText from './components/ShownText'
+import Header from "./components/Header";
+import InputComponent from "./components/InputComponent";
+import UserInput from "./components/UserInput";
+import useEngine from "./hooks/useEngine";
+import { VscDebugRestart } from "react-icons/vsc";
 const App: React.FC = () => {
-  // Empty dependency array ensures this runs only once on mount
-  const {word,UseWords}=ShownText(20);
+  const { state, word, typed, errors, restart, timeLeft, totalTyped } =
+    useEngine();
 
   return (
-    <div className="grid grid-rows-[1fr_2fr_1fr] h-screen bg-slate-500 border-2 border-green-400">
-      <div> <Header/></div>
-      <div><WordsContainer>
-        <InputComponent words={word}/>
-        <UserInput className="absolute inset-0" words={word}  UserInputWord={''}/>
-        </WordsContainer>
-     </div>
-      <div> <Header/></div>
+    <div className="h-screen bg-slate-500 border-2 border-green-400">
+      <div>
+        <Header timeLeft={timeLeft} />
+      </div>
      
+     <div className="h-1/2">
+      <WordsContainer>
+          <InputComponent words={word} />
+          <UserInput
+            className="absolute inset-0"
+            words={word}
+            UserInputWord={typed}
+          />
+          
+        </WordsContainer>
 
+      <div className="border text-center">
+        <button>
+        <VscDebugRestart size={24} onClick={restart} />
+        </button>
+      </div>
+        
+     </div>
       
-    </div>
-  )
-}
 
-const WordsContainer = ({ children }: { children: React.ReactNode }) => {
+        <div>
+          <FunButtons state={state} errors={errors} totalTyped={totalTyped}/>
+        </div>
+    </div>
+  );
+};
+type Props = {
+  state: string;
+  errors: number;
+  totalTyped: number;
+};
+const WordsContainer = ({ children}: { children: React.ReactNode}) => {
   return (
-    <div className="relative  top-1/4 left-0  text-3xl max-w-xl leading-relaxed break-all mx-auto">
+    <div className="border h-2/3 mt-20 p-5">
+     <div className="relative top-1/4 left-0  text-3xl max-w-xl leading-relaxed break-all mx-auto">
       {children}
     </div>
+    </div>
+   
   );
 };
 
 
 
-export default App
+
+const FunButtons: React.FC<Props> = ({ state, errors, totalTyped }) => {
+  return (
+    <div className="flex flex-row justify-around">
+      <p>State: {state}</p>
+      <p>Errors: {errors}</p>
+      <p>Total Typed: {totalTyped}</p>
+    </div>
+  );
+};
+
+export default App;

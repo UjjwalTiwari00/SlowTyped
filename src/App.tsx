@@ -7,21 +7,26 @@ const App: React.FC = () => {
   const { state, word, typed, errors, restart, timeLeft, totalTyped } =
     useEngine();
 
+    console.log({word})
   return (
     <div className="h-screen bg-slate-500 border-2 border-green-400">
       <div>
         <Header timeLeft={timeLeft} />
       </div>
-     
-     <div className="h-1/2">
+     <div>
+      {
+        timeLeft
+      }
+     </div>
+     <div className="h-3/5 border-2 border-red-600 mx-auto mt-20">
       <WordsContainer>
-          <InputComponent words={word} />
+          
           <UserInput
             className="absolute inset-0"
             words={word}
             UserInputWord={typed}
           />
-          
+          <InputComponent words={word} wordLimit={30}/>
         </WordsContainer>
 
       <div className="border text-center">
@@ -46,8 +51,8 @@ type Props = {
 };
 const WordsContainer = ({ children}: { children: React.ReactNode}) => {
   return (
-    <div className="border h-2/3 mt-20 p-5">
-     <div className="relative top-1/4 left-0  text-3xl max-w-xl leading-relaxed break-all mx-auto">
+    <div className="border h-[60%] w-[60%] m-10 p-5 mx-auto ">
+     <div className="relative  left-0  text-3xl leading-relaxed break-all mx-auto">
       {children}
     </div>
     </div>

@@ -6,7 +6,7 @@ import { countErrors } from "../utils/helpers"
 
 export type State = "start" | "run" | "finish";
 
-const NUMBER_OF_WORDS = 12;
+const NUMBER_OF_WORDS = 30;
 const COUNTDOWN_SECOND = 30;
 
 const useEngine = () => {
@@ -64,7 +64,7 @@ const useEngine = () => {
     }, [clearTyped, UseWords, sumErrors]);
 
     return {
-        state, word, typed, errors, restart, timeLeft, totalTyped
+        state, word, typed, errors, restart, timeLeft, totalTyped,cursor
     };
 
 }

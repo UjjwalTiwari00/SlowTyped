@@ -1,11 +1,14 @@
-
-const InputComponent = ({ words }: { words: string }) => {
+const InputComponent = ({ words,wordLimit }: { words: string,wordLimit:number }) => {
+    const minWord=words.trim().split(/\s+/);
+    const maxWords=minWord.slice(0, wordLimit).join(" ")
+    const totalWords=minWord.slice(wordLimit, words.length).join(" ")
+    console.log({maxWords},maxWords.length)
     return (
-        <div className="absolute">
+        <div className="">
               
             {
                 words.split('').map((chars, index) => (
-                    <span className=" border-red-400 " key={index}>
+                    <span className="text-slate-400" key={index}>
                         {
                             chars
                         }

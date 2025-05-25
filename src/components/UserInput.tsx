@@ -2,7 +2,7 @@ import Caret from "./Caret "
 import cn from "classnames";
 
 
-const UserInput =({words,UserInputWord,className=''}:{words:string,UserInputWord:string,className?:string}) => {
+const UserInput =({words,UserInputWord}:{words:string,UserInputWord:string}) => {
   // console.log(words,"this is words ")
   console.log(UserInputWord)
     const typedWords=UserInputWord.split('')

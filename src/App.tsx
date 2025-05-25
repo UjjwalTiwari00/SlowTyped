@@ -12,7 +12,7 @@ const App: React.FC = () => {
   return (
     <div className="h-screen bg-slate-500 border-2 border-green-400">
       <div>
-        <Header timeLeft={timeLeft} />
+        <Header />
       </div>
      <div className="absolute text-3xl m-10">
       {
@@ -23,7 +23,7 @@ const App: React.FC = () => {
       <WordsContainer>
           
           <UserInput
-            className="absolute inset-0"
+            // className="absolute inset-0"
             words={word}
             UserInputWord={typed}
           />

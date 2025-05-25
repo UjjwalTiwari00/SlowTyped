@@ -64,7 +64,7 @@ const useEngine = () => {
     }, [clearTyped, UseWords, sumErrors]);
 
     return {
-        state, word, typed, errors, restart, timeLeft, totalTyped,cursor
+        state, word, typed, errors, restart, timeLeft, totalTyped,cursor,COUNTDOWN_SECOND
     };
 
 }

@@ -4,11 +4,11 @@ const InputComponent = ({ words,wordLimit }: { words: string,wordLimit:number })
     const totalWords=minWord.slice(wordLimit, words.length).join(" ")
     console.log({maxWords},maxWords.length)
     return (
-        <div className="">
+        <div className="text-4xl">
               
             {
                 words.split('').map((chars, index) => (
-                    <span className="text-slate-400" key={index}>
+                    <span className="text-slate-400 " key={index}>
                         {
                             chars
                         }

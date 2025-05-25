@@ -3,10 +3,10 @@ export const isKeyboardCodeAllowed = (code: string) => {
     code.startsWith("Key") ||
     code.startsWith("Digit") ||
     code === "Backspace" ||
-    code === "Space"
+    code === "Space" ||
+    ["Minus", "Equal", "BracketLeft", "BracketRight", "Backslash", "Semicolon", "Quote", "Comma", "Period", "Slash", "Backquote"].includes(code)
   );
 };
-
 
 export const countErrors = (actual: string, expected: string) => {
     const expectedCharacters = expected.split("");

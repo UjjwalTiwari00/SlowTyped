@@ -1,19 +1,20 @@
 import Header from "./components/Header";
 import InputComponent from "./components/InputComponent";
 import UserInput from "./components/UserInput";
+import useAdjustedWpm from "./hooks/useAdjustedWpm";
 import useEngine from "./hooks/useEngine";
 import { VscDebugRestart } from "react-icons/vsc";
 const App: React.FC = () => {
-  const { state, word, typed, errors, restart, timeLeft, totalTyped } =
+  const { state, word, typed, errors, restart, timeLeft, totalTyped,COUNTDOWN_SECOND } =
     useEngine();
 
-    console.log({word})
+    const Wpm =useAdjustedWpm(totalTyped,errors,COUNTDOWN_SECOND);
   return (
     <div className="h-screen bg-slate-500 border-2 border-green-400">
       <div>
         <Header timeLeft={timeLeft} />
       </div>
-     <div>
+     <div className="absolute text-3xl m-10">
       {
         timeLeft
       }
@@ -41,6 +42,13 @@ const App: React.FC = () => {
         <div>
           <FunButtons state={state} errors={errors} totalTyped={totalTyped}/>
         </div>
+
+      <div>
+         {
+          (state==='finish')&&<div>{Wpm}</div>
+        }
+      </div>
+       
     </div>
   );
 };
@@ -51,7 +59,7 @@ type Props = {
 };
 const WordsContainer = ({ children}: { children: React.ReactNode}) => {
   return (
-    <div className="border h-[60%] w-[60%] m-10 p-5 mx-auto ">
+    <div className="border h-[60%] w-[80%] m-10 p-5 mx-auto">
      <div className="relative  left-0  text-3xl leading-relaxed break-all mx-auto">
       {children}
     </div>

@@ -8,7 +8,7 @@ const UserInput =({words,UserInputWord,className=''}:{words:string,UserInputWord
     const typedWords=UserInputWord.split('')
     console.log(typedWords)
   return (
-    <div className="absolute">
+    <div className="absolute text-4xl" >
         {
             typedWords.map((chars,index)=>(
                 <CharCheck actual={chars} expected={words[index]} key={index}/>
